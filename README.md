@@ -1,25 +1,37 @@
 # Qt Study
 
-## Initialize
+## Simple GUI
 
-Qt Creator에서 직접 프로젝트를 생성하거나 파일을 생성하여 qmake로 프로젝트 설정
+```c++
+#include <QApplication>
+#include <QWidget>
+```
+Qt 응용프로그램 클래스 불러오기
 
-```shell
-    qmake -project
+```c++
+// QApplication 클래스는 GUI Qt 응용 프로그램에 대한 이벤트 루프를 제공합니다.
+// 이 클래스는 GUI 응용 프로그램에서 이벤트 루프를 제공하는 데 사용됩니다.
+QApplication app(argc, argv);
+
+// 메인 위젯
+QWidget window;
+
+// 위젯의 크기 조정, 타이틀 지정, 창 띄우기
+window.resize(250, 150);
+window.setWindowTitle("Simple Example");
+window.show();
+
+// 어플리케이션 메인 루프 진행
+return app.exec();
+```
+}
+
+Main 코드 작성 후 pro파일에 Qt의 위젯을 사용하기 위한 코드 추가
+
+```
+<!-- 중략 -->
+QT += widgets
 ```
 
-위의 코드 실행시 [PROJECT_NAME].pro 파일 생성
 
-```shell
-    qmake
-```
-
-위의 코드 실행시 Makefile 생성
-
-
-```shell
-    make
-```
-
-위의 코드 실행시 오프젝트 파일 [C++FILE].o와 [PROJECT_NAME] 실행파일 생성
-
+qmake -> make 후 실행
