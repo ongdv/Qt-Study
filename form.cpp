@@ -4,7 +4,7 @@
 #include <QLabel>
 #include <QLineEdit>
 
-class MainWindow: QWidget{    
+class MainWindow:public QWidget{    
 public:
     MainWindow(QWidget *parent = nullptr);
 };
@@ -19,4 +19,18 @@ MainWindow::MainWindow(QWidget *parent): QWidget(parent){
     formLayout -> addRow("Name: ", nameEdit);
     formLayout -> addRow("Email: ", addrEdit);
     formLayout -> addRow("Age: ", occpEdit);
+
+    setLayout(formLayout);
+}
+
+int main(int argc, char*argv[])
+{
+    QApplication app(argc, argv);
+
+    MainWindow window;
+
+    window.setWindowTitle("Form Example");
+    window.show();
+
+    return app.exec();
 }
