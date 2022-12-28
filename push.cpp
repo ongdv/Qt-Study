@@ -1,9 +1,7 @@
-# Qt Study
+#include <QApplication>
+#include <QWidget>
+#include <QPushButton>
 
-## QPushButton
-
-
-```c++
 // QWidget 클래스를 상속한 MainWindow 클래스를 정의
 class MainWindow: public QWidget
 {
@@ -11,9 +9,7 @@ class MainWindow: public QWidget
     public:
     MainWindow(QWidget *parent = nullptr);
 };
-```
 
-```c++
 MainWindow::MainWindow(QWidget *parent): QWidget(parent)
 {
     // QPushButton 객체를 하나 생성하여 배치합니다. 
@@ -26,4 +22,17 @@ MainWindow::MainWindow(QWidget *parent): QWidget(parent)
     // 여기에서는 애플리케이션 객체(qApp)의 QApplication::quit로 지정되어 애플리케이션을 종료하도록 합니다. 
     connect(quitBtn, &QPushButton::clicked, qApp, &QApplication::quit);
 }
-```
+
+
+int main(int argc, char *argv[])
+{
+    QApplication app(argc, argv);
+
+    MainWindow window;
+
+    window.resize(250, 150);
+    window.setWindowTitle("QPushButton");
+    window.show();
+
+    return app.exec();
+}
